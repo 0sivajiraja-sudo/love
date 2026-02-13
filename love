@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Pøtti ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+#lockScreen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+input {
+    padding: 12px;
+    border-radius: 20px;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.container {
+    display: none;
+    padding: 40px 20px;
+}
+
+.section {
+    margin-top: 50px;
+    padding: 25px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 20px;
+}
+
+.slides {
+    display: none;
+    width: 90%;
+    border-radius: 15px;
+}
+
+.heart {
+    position: fixed;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+#surpriseMessage {
+    display: none;
+    margin-top: 20px;
+}
+</style>
+</head>
+<body>
+
+<div id="lockScreen">
+    <h2>Enter the Love Password ❤️</h2>
+    <p>Hint: Your nickname 😉</p>
+    <input type="text" id="password">
+    <button onclick="checkPassword()">Unlock My Heart</button>
+</div>
+
+<div class="container" id="mainContent">
+
+<h1>To My Beautiful Pøtti ❤️</h1>
+<p>From your forever loyal Køthi</p>
+
+<div class="section">
+<h2>2 Years Of Us 💖</h2>
+<p>February 14 marks 2 beautiful years of our love story.</p>
+<p>You are my lifeline. My peace. My forever.</p>
+<p>I am only loyal to you. My love is only for you.</p>
+</div>
+
+<div class="section">
+<h2>Our 7 Beautiful Memories 📸</h2>
+<img class="slides" src="image1.jpg">
+<img class="slides" src="image2.jpg">
+<img class="slides" src="image3.jpg">
+<img class="slides" src="image4.jpg">
+<img class="slides" src="image5.jpg">
+<img class="slides" src="image6.jpg">
+<img class="slides" src="image7.jpg">
+</div>
+
+<div class="section">
+<h2>Forever Promise</h2>
+<p>I choose you today.</p>
+<p>I will choose you tomorrow.</p>
+<p>I will choose you in every lifetime.</p>
+<button onclick="showSurprise()">Click For A Surprise 💌</button>
+<div id="surpriseMessage">
+Happy 2 Years My Love ❤️  
+I will always stand beside you.
+</div>
+</div>
+
+</div>
+
+<script>
+function checkPassword() {
+    var input = document.getElementById("password").value;
+    if (input.toLowerCase() === "pøtti") {
+        document.getElementById("lockScreen").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+        startHearts();
+        showSlides();
+    } else {
+        alert("Wrong password 😢");
+    }
+}
+
+function showSlides() {
+  let slideIndex = 0;
+  let slides = document.getElementsByClassName("slides");
+  function autoSlide() {
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    slides[slideIndex-1].style.display = "block";
+    setTimeout(autoSlide, 3000);
+  }
+  autoSlide();
+}
+
+function showSurprise() {
+    document.getElementById("surpriseMessage").style.display = "block";
+}
+
+function startHearts() {
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = "25px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+    }, 500);
+}
+</script>
+
+</body>
+</html>
